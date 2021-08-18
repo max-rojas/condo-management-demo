@@ -1,13 +1,10 @@
 package com.cenfotec.tercerexamenparcial.sucondofeliz.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@Getter
-@AllArgsConstructor
 public enum EstadoDeCondominio {
-    ACTIVO("A"),
-    INACTIVO("I");
 
-    private String codigo;
+    @JsonProperty("ACTIVO") ACTIVO,
+    @JsonProperty("INACTIVO") INACTIVO;
 }

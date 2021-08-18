@@ -18,5 +18,5 @@ public class Direccion {
     private String canton;
     private String distrito;
     private String barrio;
-    private String detalle;
+    private String linea1;
 }

@@ -11,6 +11,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -20,12 +21,11 @@ import java.util.List;
 @Entity
 public class CondominoDeCondominio extends Persona{
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private Condominio condominio;
-    @OneToMany
-    private List<CuotaCondominal> listaDeCuotasCondominales;
+    @OneToMany(mappedBy = "condominoDeCondominio")
+    private List<CuotaCondominal> listaDeCuotasCondominales = new ArrayList<>();
     @Enumerated(EnumType.STRING)
-
     private EstadoDeCondominoDeCondominio estadoDeCondominoDeCondominio;
-    private Integer numeroDeResidencia;
+    private String numeroDeResidencia;
 }
