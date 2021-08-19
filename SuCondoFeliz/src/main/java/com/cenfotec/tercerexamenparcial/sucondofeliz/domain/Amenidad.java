@@ -1,5 +1,6 @@
 package com.cenfotec.tercerexamenparcial.sucondofeliz.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,6 +26,7 @@ public class Amenidad {
     private Long Id;
 
     @ManyToMany(mappedBy = "amenidades")
+    @JsonIgnore
     private List<Condominio> condominios;
 
     private String nombre;

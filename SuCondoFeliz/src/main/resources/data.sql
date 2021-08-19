@@ -16,8 +16,8 @@ values (30001, 'Juan', 'Perez', '85239658', 'juan.perez@gmail.com', 10001, '28D'
 insert into cuota_condominal (id, condomino_de_condominio_id, monto_de_cuota, fecha_de_cuota)
 values (40001, 30001, 50000, sysdate());
 
-insert into amenidad (id, nombre, descripcion, condominio_id)
-values (50001, 'piscina', 'piscina olympica', 10001);
+insert into amenidad (id, nombre, descripcion)
+values (50001, 'piscina', 'piscina olympica');
 
 insert into condominio_amenidad (condominio_id, amenidad_id)
 values (10001, 50001)

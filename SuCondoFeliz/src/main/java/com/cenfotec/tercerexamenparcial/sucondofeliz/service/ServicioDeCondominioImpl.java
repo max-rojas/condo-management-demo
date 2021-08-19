@@ -18,7 +18,10 @@ public class ServicioDeCondominioImpl implements ServicioDeCondominio{
     private final RepositorioDeCondominio repositorioDeCondominio;
 
     @Override
-    public List<Condominio> obtenerTodosLosCondominios() {
+    public List<Condominio> obtenerTodosLosCondominios(EstadoDeCondominio estadoDeCondominio) {
+        if (Objects.nonNull(estadoDeCondominio)) {
+            return repositorioDeCondominio.findAllByEstadoEquals(estadoDeCondominio);
+        }
         return repositorioDeCondominio.findAll();
     }
 
@@ -29,11 +32,8 @@ public class ServicioDeCondominioImpl implements ServicioDeCondominio{
 
     @Override
     public void desactivarCondominio(Long id) {
-        repositorioDeCondominio.save(
-                Condominio.builder()
-                        .Id(id)
-                        .estado(EstadoDeCondominio.INACTIVO)
-                        .build()
-        );
+        Condominio condominio = repositorioDeCondominio.getById(id);
+        condominio.setEstado(EstadoDeCondominio.INACTIVO);
+        repositorioDeCondominio.save(condominio);
     }
 }

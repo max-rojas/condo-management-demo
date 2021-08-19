@@ -43,6 +43,7 @@ public class Condominio {
     @JoinTable(name = "CONDOMINIO_AMENIDAD",
     joinColumns = @JoinColumn(name = "CONDOMINIO_ID"),
     inverseJoinColumns = @JoinColumn(name = "AMENIDAD_ID"))
+    @JsonIgnore
     private Set<Amenidad> amenidades;
 
     @Enumerated(EnumType.STRING)
