@@ -4,7 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -19,6 +21,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -30,14 +33,14 @@ public class Condominio {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long Id;
+    private Long id;
     @ManyToOne
     private RepresentanteDeCondominio representatneDelCondominio;
     @Embedded
     private Direccion direccion;
     @OneToMany(mappedBy = "condominio")
     @JsonIgnore
-    private Set<CondominoDeCondominio> condominoDeCondominio = new HashSet<>();
+    private Set<CondominoDeCondominio> condominosDeCondominio = new HashSet<>();
 
     @ManyToMany
     @JoinTable(name = "CONDOMINIO_AMENIDAD",
@@ -49,12 +52,18 @@ public class Condominio {
     @Enumerated(EnumType.STRING)
     private EstadoDeCondominio estado;
 
+    @OneToMany(mappedBy = "condominio")
+    @JsonIgnore
+    private List<CuotaCondominal> listaDeCuotasCondominales;
+
     private String nombreDeCondominio;
     private String cedulaJuridicaDeAsociacion;
     private Integer cantidadDeUnidades;
-    private Double cuotaCondominal;
+    private Double montoDeCuotaCondominal;
 
 
-
+    public void agregarAmenidad(Amenidad amenidad) {
+        this.amenidades.add(amenidad);
+    }
 
 }

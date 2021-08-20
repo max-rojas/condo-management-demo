@@ -1,7 +1,7 @@
 package com.cenfotec.tercerexamenparcial.sucondofeliz.rest;
 
 import com.cenfotec.tercerexamenparcial.sucondofeliz.domain.Amenidad;
-import com.cenfotec.tercerexamenparcial.sucondofeliz.domain.Condominio;
+import com.cenfotec.tercerexamenparcial.sucondofeliz.rest.request.AmenidadRequest;
 import com.cenfotec.tercerexamenparcial.sucondofeliz.service.ServicioDeAmenidad;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -24,8 +24,8 @@ public class ControladorDeAmenidades {
 
     @PostMapping
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public Amenidad salvarAmenidad(@RequestBody Amenidad amenidad) {
-        return servicioDeAmenidad.salvarAmenidad(amenidad);
+    public Amenidad salvarAmenidad(@RequestBody AmenidadRequest amenidadRequest) {
+        return servicioDeAmenidad.salvarAmenidad(amenidadRequest);
     }
 
     @GetMapping("/condominio/{id}")

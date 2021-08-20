@@ -1,6 +1,7 @@
 package com.cenfotec.tercerexamenparcial.sucondofeliz.service;
 
 import com.cenfotec.tercerexamenparcial.sucondofeliz.domain.Condominio;
+import com.cenfotec.tercerexamenparcial.sucondofeliz.domain.CuotaCondominal;
 import com.cenfotec.tercerexamenparcial.sucondofeliz.domain.EstadoDeCondominio;
 import com.cenfotec.tercerexamenparcial.sucondofeliz.repository.RepositorioDeCondominio;
 import lombok.RequiredArgsConstructor;
@@ -35,5 +36,10 @@ public class ServicioDeCondominioImpl implements ServicioDeCondominio{
         Condominio condominio = repositorioDeCondominio.getById(id);
         condominio.setEstado(EstadoDeCondominio.INACTIVO);
         repositorioDeCondominio.save(condominio);
+    }
+
+    @Override
+    public Condominio obtenerCondominoPorID(Long id) {
+        return repositorioDeCondominio.findCondominioById(id);
     }
 }

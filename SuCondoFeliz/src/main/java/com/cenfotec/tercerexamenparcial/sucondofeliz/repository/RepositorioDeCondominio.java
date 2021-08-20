@@ -11,4 +11,5 @@ import java.util.List;
 public interface RepositorioDeCondominio extends JpaRepository<Condominio, Long> {
 
     List<Condominio> findAllByEstadoEquals(EstadoDeCondominio estadoDeCondominio);
+    Condominio findCondominioById(Long id);
 }

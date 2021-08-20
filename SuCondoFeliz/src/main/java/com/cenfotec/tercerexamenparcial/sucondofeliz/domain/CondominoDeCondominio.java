@@ -1,9 +1,12 @@
 package com.cenfotec.tercerexamenparcial.sucondofeliz.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -24,6 +27,7 @@ public class CondominoDeCondominio extends Persona{
     @ManyToOne
     private Condominio condominio;
     @OneToMany(mappedBy = "condominoDeCondominio")
+    @JsonIgnore
     private List<CuotaCondominal> listaDeCuotasCondominales = new ArrayList<>();
     @Enumerated(EnumType.STRING)
     private EstadoDeCondominoDeCondominio estadoDeCondominoDeCondominio;

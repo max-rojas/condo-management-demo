@@ -1,8 +1,10 @@
 package com.cenfotec.tercerexamenparcial.sucondofeliz.rest;
 
 import com.cenfotec.tercerexamenparcial.sucondofeliz.domain.Condominio;
+import com.cenfotec.tercerexamenparcial.sucondofeliz.domain.CuotaCondominal;
 import com.cenfotec.tercerexamenparcial.sucondofeliz.domain.EstadoDeCondominio;
 import com.cenfotec.tercerexamenparcial.sucondofeliz.service.ServicioDeCondominio;
+import com.cenfotec.tercerexamenparcial.sucondofeliz.service.ServicioDeCuotaCondominal;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,13 +30,22 @@ public class ControladorDeCondominios {
     @ResponseStatus(HttpStatus.OK)
     public List<Condominio> obtenerTodosLosCondominios(
             @RequestParam(name = "filtrarPorEstado", required = false) EstadoDeCondominio estadoDeCondominio) {
-        return servicioDeCondominio.obtenerTodosLosCondominios(estadoDeCondominio);
+        try {
+            return servicioDeCondominio.obtenerTodosLosCondominios(estadoDeCondominio);
+        } catch (Exception e) {
+            throw new ResponseStatusException(
+                    HttpStatus.NOT_FOUND, "No se pudieron obtener los condominios", e);        }
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.ACCEPTED)
     public Condominio salvarCondominio(@RequestBody Condominio condominio) {
-        return servicioDeCondominio.salvarCondominio(condominio);
+        try {
+            return servicioDeCondominio.salvarCondominio(condominio);
+        } catch (Exception e) {
+            throw new ResponseStatusException(
+                    HttpStatus.EXPECTATION_FAILED, "El condominio no pudo ser salvado", e);
+        }
     }
 
     @GetMapping(path = "{id}")
@@ -42,9 +53,10 @@ public class ControladorDeCondominios {
     public void desactivarCondominio(@PathVariable(required = true, name = "id") Long id) {
         try {
             servicioDeCondominio.desactivarCondominio(id);
-        } catch (Exception ex) {
+        } catch (Exception e) {
             throw new ResponseStatusException(
-                    HttpStatus.NOT_FOUND, "El ID no pertenece a ningun condominio", ex);
+                    HttpStatus.NOT_FOUND, "El ID no pertenece a ningun condominio", e);
         }
     }
+
 }
