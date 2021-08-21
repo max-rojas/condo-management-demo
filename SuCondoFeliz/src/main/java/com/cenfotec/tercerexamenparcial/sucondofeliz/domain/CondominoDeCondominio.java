@@ -17,10 +17,10 @@ import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Entity
 public class CondominoDeCondominio extends Persona{
 
@@ -32,4 +32,24 @@ public class CondominoDeCondominio extends Persona{
     @Enumerated(EnumType.STRING)
     private EstadoDeCondominoDeCondominio estadoDeCondominoDeCondominio;
     private String numeroDeResidencia;
+
+    @Builder
+    public CondominoDeCondominio(Long id, String nombre, String apellido, String telefono, String correo,
+                                 Condominio condominio, List<CuotaCondominal> listaDeCuotasCondominales,
+                                 EstadoDeCondominoDeCondominio estadoDeCondominoDeCondominio, String numeroDeResidencia) {
+        super(id, nombre, apellido, telefono, correo);
+        this.condominio = condominio;
+        this.listaDeCuotasCondominales = listaDeCuotasCondominales;
+        this.estadoDeCondominoDeCondominio = estadoDeCondominoDeCondominio;
+        this.numeroDeResidencia = numeroDeResidencia;
+    }
+
+    public void agregarCuotaCondominal(CuotaCondominal cuotaCondominal) {
+        if(this.listaDeCuotasCondominales == null) {
+            this.listaDeCuotasCondominales = new ArrayList<>();
+            this.listaDeCuotasCondominales.add(cuotaCondominal);
+            return;
+        }
+        this.listaDeCuotasCondominales.add(cuotaCondominal);
+    }
 }

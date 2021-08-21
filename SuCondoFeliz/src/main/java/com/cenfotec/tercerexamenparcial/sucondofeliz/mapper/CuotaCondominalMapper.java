@@ -3,11 +3,8 @@ package com.cenfotec.tercerexamenparcial.sucondofeliz.mapper;
 import com.cenfotec.tercerexamenparcial.sucondofeliz.domain.Condominio;
 import com.cenfotec.tercerexamenparcial.sucondofeliz.domain.CondominoDeCondominio;
 import com.cenfotec.tercerexamenparcial.sucondofeliz.domain.CuotaCondominal;
-import com.cenfotec.tercerexamenparcial.sucondofeliz.repository.RepositorioDeCondominio;
-import com.cenfotec.tercerexamenparcial.sucondofeliz.repository.RepositorioDeCondominoDeCondominio;
 import com.cenfotec.tercerexamenparcial.sucondofeliz.rest.request.CuotacondominalRequest;
 import com.cenfotec.tercerexamenparcial.sucondofeliz.rest.response.CuotaCondominalResponse;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;

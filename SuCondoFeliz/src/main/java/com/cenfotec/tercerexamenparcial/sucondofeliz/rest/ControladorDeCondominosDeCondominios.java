@@ -1,7 +1,8 @@
 package com.cenfotec.tercerexamenparcial.sucondofeliz.rest;
 
 import com.cenfotec.tercerexamenparcial.sucondofeliz.domain.CondominoDeCondominio;
-import com.cenfotec.tercerexamenparcial.sucondofeliz.domain.EstadoDeCondominoDeCondominio;
+import com.cenfotec.tercerexamenparcial.sucondofeliz.rest.request.CondominoDeCondominioRequest;
+import com.cenfotec.tercerexamenparcial.sucondofeliz.rest.response.CondominoDeCondominioResponse;
 import com.cenfotec.tercerexamenparcial.sucondofeliz.service.ServicioDeCondominoDeCondominio;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -10,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
@@ -26,7 +26,7 @@ public class ControladorDeCondominosDeCondominios {
 
     @GetMapping("/condominio/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public List<CondominoDeCondominio> obtenerTodosLosCondominosDeCondominio(
+    public List<CondominoDeCondominioResponse> obtenerTodosLosCondominosDeCondominio(
             @PathVariable(name = "id") Long idCondominio) {
         try {
             return servicioDeCondominoDeCondominio.obtenerTodosLosCondominosDeCondominios(idCondominio);
@@ -37,9 +37,9 @@ public class ControladorDeCondominosDeCondominios {
 
     @PostMapping
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public CondominoDeCondominio salvarCondominoDeCondominio(@RequestBody CondominoDeCondominio condominoDeCondominio) {
+    public CondominoDeCondominioResponse salvarCondominoDeCondominio(@RequestBody CondominoDeCondominioRequest condominoDeCondominioRequest) {
         try {
-            return servicioDeCondominoDeCondominio.salvarCondominoDeCondominio(condominoDeCondominio);
+            return servicioDeCondominoDeCondominio.salvarCondominoDeCondominio(condominoDeCondominioRequest);
         } catch (Exception e) {
             throw new ResponseStatusException(
                     HttpStatus.EXPECTATION_FAILED, "El condominio no pudo ser salvado", e);

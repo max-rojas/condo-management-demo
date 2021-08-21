@@ -24,7 +24,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -40,7 +41,7 @@ public class Condominio {
     private Direccion direccion;
     @OneToMany(mappedBy = "condominio")
     @JsonIgnore
-    private Set<CondominoDeCondominio> condominosDeCondominio = new HashSet<>();
+    private Set<CondominoDeCondominio> listaDeCondominosDeCondominio = new HashSet<>();
 
     @ManyToMany
     @JoinTable(name = "CONDOMINIO_AMENIDAD",
