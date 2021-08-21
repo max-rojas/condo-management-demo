@@ -1,6 +1,7 @@
 package com.cenfotec.tercerexamenparcial.sucondofeliz.rest;
 
 import com.cenfotec.tercerexamenparcial.sucondofeliz.domain.CuotaCondominal;
+import com.cenfotec.tercerexamenparcial.sucondofeliz.rest.request.CuotacondominalRequest;
 import com.cenfotec.tercerexamenparcial.sucondofeliz.rest.response.CuotaCondominalResponse;
 import com.cenfotec.tercerexamenparcial.sucondofeliz.service.ServicioDeCuotaCondominal;
 import lombok.RequiredArgsConstructor;
@@ -37,9 +38,9 @@ public class ControldadorDeCuotasCondominales {
 
     @PostMapping
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public CuotaCondominal salvarCuotaCondominal(@RequestBody CuotaCondominal cuotaCondominal) {
+    public CuotaCondominalResponse salvarCuotaCondominal(@RequestBody CuotacondominalRequest cuotacondominalRequest) {
         try {
-            return servicioDeCuotaCondominal.salvarCuotaCondominal(cuotaCondominal);
+            return servicioDeCuotaCondominal.salvarCuotaCondominal(cuotacondominalRequest);
         } catch (Exception e) {
             throw new ResponseStatusException(
                     HttpStatus.EXPECTATION_FAILED, "La cuota condominal no pudo ser salvada", e);
