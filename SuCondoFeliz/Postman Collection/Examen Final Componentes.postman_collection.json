@@ -1,0 +1,172 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Examen Final Componentes",
+		"_postman_id": "a6904639-b6e6-8acc-0c1a-e8f999a5c80f",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Condos",
+			"description": "",
+			"item": [
+				{
+					"name": "Get All Condos",
+					"request": {
+						"url": "",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Save Condo",
+					"request": {
+						"url": "http://localhost:8080/condominios",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"estado\": \"ACTIVO\",\n    \"nombreDeCondominio\": \"Condominio Las Flores\",\n    \"cedulaJuridicaDeAsociacion\": \"3-2036-3214\",\n    \"cantidadDeUnidades\": 64,\n    \"cuotaCondominal\": 50000,\n    \n    \"representatneDelCondominio\": {\n        \"nombre\": \"Max\",\n        \"apellido\": \"Rojas\",\n        \"telefono\": \"86110962\",\n        \"correo\": \"maxter.rojas@gmail.com\",\n        \"id\": 20001\n    },\n    \"direccion\": {\n        \"provincia\": \"Heredia\",\n        \"canton\": \"Heredia\",\n        \"distrito\": \"Ulloa\",\n        \"barrio\": \"Lagunilla\",\n        \"linea1\": \"casa #14B\"\n    }\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Deactivate Condo",
+					"request": {
+						"url": "",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Amenidades",
+			"description": "",
+			"item": [
+				{
+					"name": "Get All Amenidades",
+					"request": {
+						"url": "http://localhost:8080/amenidades/condominio/10001",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "Obtener todas las amenidades"
+					},
+					"response": []
+				},
+				{
+					"name": "Save Amenidad",
+					"request": {
+						"url": "http://localhost:8080/amenidades",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"idCondominio\": 10001,\n    \"amenidad\": {\n\t\t\t        \"nombre\": \"gimnasio\",\n\t\t\t        \"descripcion\": \"gimnasio con maquinas y entrenamiento funcional\"\n    \t\t\t}\n}    \n"
+						},
+						"description": "Salvar y crear amenidades"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Condomino de Condominio",
+			"description": "",
+			"item": [
+				{
+					"name": "Get All Condominos de Condominios",
+					"request": {
+						"url": "http://localhost:8080/condominos-de-condominio/condominio/10001",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Save Condomino de Condominio",
+					"request": {
+						"url": "http://localhost:8080/condominos-de-condominio",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nombre\": \"Ruben\",\n\t\"apellido\": \"Rojas\",\n\t\"telefono\": \"\",\n\t\"correo\": \"ruben@gmail.com\",\n\t\"idCondominio\": 10001,\n\t\"estado\": \"CONDOMINO\",\n\t\"numeroDeResidencia\": \"86B\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Deactivate Condomino de Condominio",
+					"request": {
+						"url": "",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cuotas Condominales",
+			"description": "",
+			"item": [
+				{
+					"name": "Get Cuotas by Condo",
+					"request": {
+						"url": "",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Cuota Condominal",
+					"request": {
+						"url": "",
+						"method": "POST",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
